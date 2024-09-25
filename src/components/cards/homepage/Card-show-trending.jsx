@@ -33,8 +33,8 @@ const CardTrending = () => {
 
   return (
     <>
-      <div className="pl-5 ">
-        <p className="font-bold text-header-2 font-pacifico">
+      <div className="pl-5">
+        <p className="font-bold text-header-2 font-pacifico mb-10 mt-20">
           Popular Services
         </p>
       </div>
@@ -52,7 +52,7 @@ const CardTrending = () => {
             <div key={index}>
               <a
                 href="#"
-                className="block rounded-lg p-4 shadow-sm shadow-indigo-100"
+                className="block rounded-lg p-4 h-[300px] shadow-sm shadow-indigo-100"
               >
                 <img
                   alt={service.name}

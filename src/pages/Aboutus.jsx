@@ -103,7 +103,7 @@ const Aboutus = () => {
             {/* text */}
             <div className="grid place-content-center px-10 lg:px-0">
               <span className="font-poppins text-md md:text-lg">
-                helping users make informed decisions while supporting service
+                We help users make informed decisions while supporting local service
                 providers by giving them a platform to showcase their expertise.
               </span>
             </div>

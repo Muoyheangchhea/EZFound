@@ -86,12 +86,17 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             </li>
             {!accessToken ? (
               <>
-                <Link to="/signup" className="ml-2">
-                  Register
-                </Link>
+                <button className="bg-amber-500 px-5 py-2 rounded-full">
+                  <Link to="/signup" className="ml-2">
+                    Register
+                  </Link>
+                </button>
+
+                <button className="bg-amber-500 px-5 py-2 rounded-full">
                 <Link to="/login" className="ml-2">
                   Login
                 </Link>
+                </button>
               </>
             ) : (
               <>
@@ -149,8 +154,10 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
             {!accessToken ? (
               <>
-                <Link to="/register">Register</Link>
-                <Link to="/login" className="ml-2">
+                <Link to="/signup" className="my-10">
+                  Register
+                </Link>
+                <Link to="/login" className="mt-5">
                   Login
                 </Link>
               </>

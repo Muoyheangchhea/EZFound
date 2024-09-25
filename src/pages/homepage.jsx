@@ -129,7 +129,7 @@ let Homepage = () => {
           <section className="mb-10">
             <CardShowTrending />
             <div className="mt-8 flex flex-wrap justify-center gap-4 ">
-              <Button1 title="Get start" />
+              {/* <Button1 title="Get start" /> */}
             </div>
           </section>
         </main>

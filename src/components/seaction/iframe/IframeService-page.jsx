@@ -3,7 +3,7 @@ let IframeServicePage = () => {
     <div>
       <div class="flex flex-wrap justify-center items-center h-auto pt-[9%]">
         <div class="w-full md:w-2/5 p-4">
-          <h2 class="text-xl md:text-7xl  mb-5 font-pacifico leading-7">
+          <h2 class="text-3xl md:text-5xl  mb-5 font-pacifico leading-7">
             GET IN TOUCH!
           </h2>
           <form class="space-y-4 font-poppins">

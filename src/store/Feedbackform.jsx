@@ -2,12 +2,18 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
+const isKhmerText = (text) => {
+  const khmerRegex = /[\u1780-\u17FF]/;
+  return khmerRegex.test(text);
+};
+
 const FeedbackForm = ({ shopename, id }) => {
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
   const [showAlert, setShowAlert] = useState(false);
   const [feedback, setFeedback] = useState("");
   const [reviews, setReviews] = useState([]); // State to hold fetched reviews
+  const khmerTitleClass = isKhmerText(shopename) ? "font-kh" : "font-pacifico"; // Use shopename instead of title
 
   const handleTextareaFocus = (event) => {
     if (!accessToken) {
@@ -98,13 +104,15 @@ const FeedbackForm = ({ shopename, id }) => {
   };
 
   return (
-    <div className="md:flex mb-10 rounded-lg flex flex-col">
-      <div className="bg-white grid grid-cols-6 gap-2 rounded-xl p-2 text-sm">
-        <h1 className="font-poppins text-center text-slate-200 text-xl font-bold col-span-6">
+    <div className={`md:flex mb-10 rounded-lg flex flex-col ${khmerTitleClass}`}>
+      <div className="bg-white grid grid-cols-6 gap-2 rounded-xl p-5 text-sm">
+        <h1 className="font-poppins text-center text-black text-xl font-bold col-span-6">
           Send Feedback to{" "}
-          <span className="text-grey-400 font-pacifico">{shopename}</span>
+          <span className="text-amber-500 font-pacifico">
+            {shopename}
+          </span>
         </h1>
-
+  
         {/* Textarea for feedback */}
         <textarea
           placeholder="I love this service so much it makes me easy and efficient....."
@@ -113,7 +121,7 @@ const FeedbackForm = ({ shopename, id }) => {
           onChange={handleFeedbackChange}
           onFocus={handleTextareaFocus}
         ></textarea>
-
+  
         {/* Feedback button */}
         <button
           className="fill-slate-600 col-span-1 flex justify-center items-center rounded-lg p-2 duration-300 bg-slate-100 hover:border-slate-600 focus:fill-blue-200 focus:bg-blue-400 border border-slate-200"
@@ -127,7 +135,7 @@ const FeedbackForm = ({ shopename, id }) => {
             <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path>
           </svg>
         </button>
-
+  
         {/* Alert Message */}
         {showAlert && (
           <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm bg-black/30">
@@ -151,12 +159,8 @@ const FeedbackForm = ({ shopename, id }) => {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white">
-                      Please log in to provide feedback!
-                    </p>
-                    <p className="text-gray-500">
-                      You need to log in first to type your feedback.
-                    </p>
+                    <p className="text-white">Please log in to provide feedback!</p>
+                    <p className="text-gray-500">You need to log in first to type your feedback.</p>
                   </div>
                 </div>
                 <button
@@ -179,7 +183,7 @@ const FeedbackForm = ({ shopename, id }) => {
                   </svg>
                 </button>
               </div>
-
+  
               {/* Link to Login */}
               <Link
                 to="/login"
@@ -190,31 +194,26 @@ const FeedbackForm = ({ shopename, id }) => {
             </div>
           </div>
         )}
-
+  
         {/* Display fetched reviews */}
         <div className="col-span-6 mt-4">
-          <h2 className="text-lg font-bold">Reviews:</h2>
+          <h2 className="text-lg font-bold font-pacifico">Reviews:</h2>
           {reviews.length > 0 ? (
             reviews.map((review) => (
-              <div
-                key={review.id}
-                className="border-b border-slate-200 pb-2 mb-2"
-              >
-                <p className="font-medium">{review.comment}</p>{" "}
+              <div key={review.id} className="border-b border-slate-200 pb-2 mb-2">
+                <p className="font-medium font-pacifico">{review.comment}</p>{" "}
                 {/* Adjust according to your API response */}
-                <p className="text-yellow-500">
-                  Rating: {review.rate_star}
-                </p>{" "}
+                <p className="text-yellow-500">Rating: {review.rate_star}</p>{" "}
                 {/* Adjust according to your API response */}
               </div>
             ))
           ) : (
-            <p>No reviews available.</p>
+            <p className="font-pacifico">No reviews available.</p>
           )}
         </div>
       </div>
     </div>
   );
-};
+}  
 
 export default FeedbackForm;

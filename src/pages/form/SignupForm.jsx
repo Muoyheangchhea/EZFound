@@ -52,6 +52,10 @@ export default function SignUpForm() {
     }
   };
 
+  const handleClose = () => {
+    navigate("/"); // Navigate back to the home page
+  };
+
   return (
     <>
       <HelmetProvider>
@@ -85,7 +89,16 @@ export default function SignUpForm() {
             content="https://easyfound.automatex.dev/media/uploads/category_0a492b09-90d5-4a29-b21c-944f54693dab.png"
           />
         </Helmet>
-        <section className="grid grid-cols-1 md:grid-cols-2 max-w-screen-xl min-w-80 mx-auto">
+        <section className="grid grid-cols-1 md:grid-cols-2 max-w-screen-xl min-w-80 mx-auto relative">
+          {/* Close Button */}
+          <button
+            type="button"
+            className="absolute top-4 right-4 text-2xl font-bold text-gray-500 hover:text-gray-800"
+            onClick={handleClose}
+          >
+            &#10005; {/* This is the "X" character */}
+          </button>
+
           {/* Animation Section */}
           <div className=" hidden md:flex items-center justify-start">
             <Lottie
@@ -231,29 +244,21 @@ export default function SignUpForm() {
                 {/* Sign Up Button */}
                 <button
                   type="submit"
-                  className="cursor-pointer mt-10 text-white font-bold relative text-[14px] w-full h-[3em] text-center bg-gradient-to-r from-violet-500 from-10% via-sky-500 via-30% to-pink-500 to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-violet-500 before:from-10% before:via-sky-500 before:via-30% before:to-pink-500 before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-violet-700 focus:ring-violet-700"
+                  className="mt-10 text-white bg-amber-700 flex items-center px-8 py-3 rounded-full"
                 >
                   Sign Up
                 </button>
-
-                {/* Logo */}
-                <div className="font-poppins mt-10 flex items-center">
-                  <Link to="/">
-                    <img src={Logo1} alt="Logo" className="w-16 h-16" />
-                  </Link>
-                  <span className="font-pacifico">Easy Found</span>
-                </div>
               </Form>
             </Formik>
           </div>
-          {/* animation phone responsive */}
-          <div className=" flex items-center justify-start md:hidden ">
+          {/* animation phone responsive
+          <div className="hidden lg:flex items-center justify-start md:hidden ">
             <Lottie
               animationData={animationData}
               className="h-[500px] pt-10"
               loop={true}
             />
-          </div>
+          </div> */}
         </section>
       </HelmetProvider>
       <ToastContainer />

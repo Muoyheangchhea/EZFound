@@ -9,6 +9,7 @@ import Lottie from "lottie-react";
 import animationData from "../../components/animations/login.json";
 import animationData2 from "../../components/animations/online-sales.json";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+
 export default function LoginForm({ handleLogin }) {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +27,6 @@ export default function LoginForm({ handleLogin }) {
         toast.success("Login Successfully");
 
         navigate("/");
-        // window.location.reload(); // Navigate to the home page
       } else if (loginRes.message) {
         toast.error(loginRes.message);
       }
@@ -36,6 +36,10 @@ export default function LoginForm({ handleLogin }) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleClose = () => {
+    navigate("/"); // Navigate back to the home page
   };
 
   return (
@@ -66,14 +70,23 @@ export default function LoginForm({ handleLogin }) {
             content="https://easyfound-cstad.vercel.app/"
           />
           <link rel="canonical" href="https://easyfound-cstad.vercel.app/" />
-
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
             content="https://easyfound.automatex.dev/media/uploads/category_0a492b09-90d5-4a29-b21c-944f54693dab.png"
           />
         </Helmet>
-        <section className="grid grid-cols-1 md:grid-cols-2 h-screen max-w-screen-xl min-w-80 mx-auto">
+
+        <section className="grid grid-cols-1 md:grid-cols-2 h-screen max-w-screen-xl min-w-80 mx-auto relative">
+          {/* Close Button */}
+          <button
+            type="button"
+            className="absolute top-4 right-32 text-2xl font-bold text-gray-500 hover:text-gray-800"
+            onClick={handleClose}
+          >
+            &#10005; {/* This is the "X" character */}
+          </button>
+
           <div className="md:flex items-center justify-start hidden">
             <Lottie
               animationData={animationData}
@@ -91,7 +104,7 @@ export default function LoginForm({ handleLogin }) {
             <div className="grid gap-8">
               <section id="back-div" className="rounded-3xl">
                 <div className="border-8 border-transparent rounded-xl bg-white dark:bg-gray-900 shadow-xl p-8 m-2">
-                  <h1 className="text-5xl font-bold text-center cursor-default dark:text-gray-300 text-gray-900">
+                  <h1 className="text-5xl font-bold text-center cursor-default dark:text-gray-300 text-gray-900 mb-10">
                     Log in
                   </h1>
                   <Formik
@@ -129,7 +142,7 @@ export default function LoginForm({ handleLogin }) {
                         <Field
                           id="email"
                           name="email"
-                          className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
+                          className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-amber-500 transition transform hover:scale-105 duration-300"
                           type="email"
                           placeholder="Email"
                         />
@@ -150,7 +163,7 @@ export default function LoginForm({ handleLogin }) {
                         <Field
                           id="password"
                           name="password"
-                          className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 transition transform hover:scale-105 duration-300"
+                          className="border p-3 shadow-md dark:bg-indigo-700 dark:text-gray-300 dark:border-gray-700 border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-amber-500 transition transform hover:scale-105 duration-300"
                           type={showPassword ? "text" : "password"}
                           placeholder="Password"
                         />
@@ -163,19 +176,16 @@ export default function LoginForm({ handleLogin }) {
 
                       <a
                         href="#"
-                        className="text-blue-400 text-sm transition hover:underline"
+                        className="text-amber-400 text-sm transition hover:underline"
                       >
                         Forget your password?
                       </a>
 
                       <button
-                        className={`cursor-pointer mt-10 text-white font-bold relative text-[14px] w-full h-[3em] text-center bg-gradient-to-r from-violet-500 from-10% via-sky-500 via-30% to-pink-500 to-90% bg-[length:400%] rounded-[30px] z-10 hover:animate-gradient-xy hover:bg-[length:100%] before:content-[''] before:absolute before:-top-[5px] before:-bottom-[5px] before:-left-[5px] before:-right-[5px] before:bg-gradient-to-r before:from-violet-500 before:from-10% before:via-sky-500 before:via-30% before:to-pink-500 before:bg-[length:400%] before:-z-10 before:rounded-[35px] before:hover:blur-xl before:transition-all before:ease-in-out before:duration-[1s] before:hover:bg-[length:10%] active:bg-violet-700 ${
-                          loading ? "opacity-50 cursor-not-allowed" : ""
-                        }`}
+                        className="text-white bg-amber-700 flex items-center px-8 py-3 rounded-full"
                         type="submit"
-                        disabled={loading}
                       >
-                        {loading ? "Logging in..." : "LOG IN"}
+                        Login
                       </button>
                     </Form>
                   </Formik>
@@ -185,7 +195,7 @@ export default function LoginForm({ handleLogin }) {
                       Don't have an account?{" "}
                       <Link
                         to="/signup"
-                        className="text-blue-400 transition hover:underline"
+                        className="text-amber-400 transition hover:underline"
                       >
                         Sign Up
                       </Link>
@@ -219,14 +229,14 @@ export default function LoginForm({ handleLogin }) {
                       By signing in, you agree to our{" "}
                       <a
                         href="#"
-                        className="text-blue-400 transition hover:underline"
+                        className="text-amber-400 transition hover:underline"
                       >
                         Terms
                       </a>{" "}
                       and{" "}
                       <a
                         href="#"
-                        className="text-blue-400 transition hover:underline"
+                        className="text-amber-400 transition hover:underline"
                       >
                         Privacy Policy
                       </a>
@@ -239,6 +249,7 @@ export default function LoginForm({ handleLogin }) {
           </div>
         </section>
       </HelmetProvider>
+
       <ToastContainer
         position="top-right"
         autoClose={3000}

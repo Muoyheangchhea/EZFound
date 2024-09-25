@@ -43,10 +43,10 @@ const Faq = () => {
         {/* Section 1 */}
         <section className="flex  overflow-hidden md:h-screen flex-col items-center px-20 pt-10 pb-8 w-full text-center text-amber-500 border-t border-gray-200 rounded-bl-3xl rounded-br-3xl max-md:px-5 max-md:py-24 max-md:max-w-full">
           <div className="flex flex-col mb-0 max-w-full w-[731px] max-md:mb-2.5 ">
-            <h2 className="self-center font-pacifico text-4xl leading-none max-md:max-w-full">
+            <h2 className="self-center font-bold font-pacifico text-4xl leading-none max-md:max-w-full">
               How can we help You?
             </h2>
-            <p className="font-poppins mt-9 text-xl leading-tight max-md:max-w-full">
+            <p className="font-poppins text-black dark:text-white mt-9 text-lg leading-tight max-md:max-w-full">
               Search for our advice and answers with my team real quick or get
               in touch
             </p>
@@ -70,7 +70,7 @@ const Faq = () => {
               className="object-contain self-center max-w-full aspect-square w-[120px]"
               alt="FAQ icon"
             />
-            <p className="mt-5 mx-auto">General</p>
+            <p className="mt-5 mx-auto text-[24px]">General Questions</p>
           </article>
 
           <article
@@ -83,7 +83,7 @@ const Faq = () => {
               className="object-contain self-center max-w-full aspect-square w-[120px]"
               alt="Card icon"
             />
-            <p className="mt-5 mx-auto">Card</p>
+            <p className="mt-5 mx-auto text-[24px]">Payment</p>
           </article>
 
           <article
@@ -96,7 +96,7 @@ const Faq = () => {
               className="object-contain self-center max-w-full aspect-square w-[120px]"
               alt="Individual icon"
             />
-            <p className="mt-5 mx-auto">Individual</p>
+            <p className="mt-5 mx-auto text-[24px]">Ratings & Reviews</p>
           </article>
         </section>
 
@@ -104,12 +104,12 @@ const Faq = () => {
         <div className="relative w-full bg-white px-6 pt-10 pb-8 mt-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-2xl sm:rounded-lg sm:px-10">
           <div className="mx-auto px-5">
             <div className="flex flex-col items-center">
-              <h2 className="font-pacifico  mt-5 text-center text-3xl font-bold tracking-tight md:text-5xl">
+              <h2 className="font-pacifico  mt-5 text-center text-black text-3xl font-bold tracking-tight md:text-5xl">
                 {selectedFaq === "general"
-                  ? "FAQ"
+                  ? "General Questions"
                   : selectedFaq === "card"
-                  ? "Card FAQ"
-                  : "Individual FAQ"}
+                  ? "Payment Questions"
+                  : "Ratings & Reviews Questions"}
               </h2>
               <p className="mt-3 text-lg text-neutral-500  md:text-xl">
                 Frequently asked questions about{" "}
@@ -476,10 +476,10 @@ const Faq = () => {
 
         {/* Section 3 */}
         <section className="flex overflow-hidden flex-col justify-center items-center px-64 py-20 max-md:px-5">
-          <h2 className=" font-pacifico flex-1 text-3xl leading-7 text-center text-slate-500 max-md:max-w-full mb-4">
+          <h2 className=" font-pacifico flex-1 text-2xl leading-7 text-center text-amber-500 max-md:max-w-full mb-4">
             Didn't find the answer to your question?
           </h2>
-          <p className="font-poppins text-xl leading-normal max-md:max-w-full mb-6">
+          <p className="font-poppins text-lg leading-normal max-md:max-w-full mb-6">
             Contact us and we’ll get back to you as soon as possible.
           </p>
           <a

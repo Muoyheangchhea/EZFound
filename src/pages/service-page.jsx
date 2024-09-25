@@ -34,13 +34,13 @@ let Servicepage = () => {
   ];
   const tagList = [
     "Hair Salon",
-    "Electricains",
-    "Nain Salon",
+    "Electricians",
+    "Nail Salon",
     "Phone Repair",
     " Property Sale",
-    " SkinCare",
-    "KhmerFood",
-    "Many more",
+    " SkinCare Clinics",
+    "Khmer Food",
+    "More",
   ];
   return (
     <>
@@ -82,7 +82,7 @@ let Servicepage = () => {
               {" "}
               Categories
             </span>
-            <Button1 title="Get start" />
+            {/* <Button1 title="Get start" /> */}
           </section>
           <section className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-screen-xl min-w-80 mx-auto  ">
             {imageList.map((item, i) => (
