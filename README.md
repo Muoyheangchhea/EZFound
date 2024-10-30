@@ -11,14 +11,14 @@
 - **AI Chatbot**: Provides assistance and answers to common questions.
 
 ### Technologies
-- **Frontend**: Built with **JavaScript**, **React**, **HTML**, and **CSS**.
+- **Frontend**: Built with **JavaScript**, **React** with **Vite**, **HTML**, and **CSS**.
 - **Styling**: Styled using **Tailwind CSS** for responsive and modern design.
 - **Associated** with API
 
 ### Getting Started
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/ez-found.git
+   git clone https://github.com/Muoyheangchhea/EZFound.git
    ```
 2. Install dependencies:
    ```bash
